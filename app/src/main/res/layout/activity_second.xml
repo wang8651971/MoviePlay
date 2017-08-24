@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="wang.xiaop.movieplay.SecondActivity">
+    tools:context="wang.xiaop.movieplay.act.main.SecondActivity">
 
     <include layout="@layout/layout_toolbar" />
 
-    <wang.xiaop.movieplay.view.CanvesView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/second_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

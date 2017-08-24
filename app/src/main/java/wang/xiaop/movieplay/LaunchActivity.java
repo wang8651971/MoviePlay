@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
+import wang.xiaop.movieplay.act.main.SecondActivity;
+
 public class LaunchActivity extends AppCompatActivity {
 
     @Override
