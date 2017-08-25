@@ -6,13 +6,9 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
-import android.widget.Toast
 import wang.xiaop.movieplay.R
-import wang.xiaop.movieplay.base.BaseActivity.retrofitUtil
 import wang.xiaop.movieplay.bean.MainBean
-import wang.xiaop.movieplay.network.entity.ListDayDiscount
-import wang.xiaop.movieplay.network.http.ProgressSubscriber
-import wang.xiaop.movieplay.network.http.SubscriberOnNextListener
+import wang.xiaop.movieplay.network.Net
 
 
 class SecondActivity : AppCompatActivity() {
@@ -34,28 +30,12 @@ class SecondActivity : AppCompatActivity() {
         adapter = MainAdapter(data)
         recycler.adapter = adapter
 
-        request()
-    }
-
-    private var getResultOnNext: SubscriberOnNextListener<*>? = null
-    private fun request() {
-        retrofitUtil.setUseCache(false)
-        retrofitUtil.getDayDiscountPost(ProgressSubscriber(getResultOnNext, this@SecondActivity, true), "{\"pageIndex\":1,\"pageSize\":10,\"version\":1}")
-        getResultOnNext = object : SubscriberOnNextListener<ListDayDiscount> {
-            override fun onNext(result: ListDayDiscount?) {
-                val sb = StringBuilder()
-                if (result != null) {
-                    for (bean in result.listDayDiscount) {
-                        sb.append(bean.team_Title).append("||")
-                    }
-                }
-            }
-
-            override fun onError(code: Int, message: String) {
-                Toast.makeText(this@SecondActivity, code.toString() + "||" + message, Toast.LENGTH_SHORT).show()
-            }
+        findViewById(R.id.btn).setOnClickListener {
+            Net.request()
         }
     }
+
+
 
     var toolbar: Toolbar? = null // Toolbar
     var actionBar: ActionBar? = null// ActionBar

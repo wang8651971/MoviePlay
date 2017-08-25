@@ -2,8 +2,6 @@ package wang.xiaop.movieplay;
 
 import android.app.Application;
 
-import wang.xiaop.movieplay.network.http.APIFactory;
-
 /**
  * Created by 王攀 on 2017/8/24.
  */
@@ -16,6 +14,6 @@ public class App extends Application {
         super.onCreate();
         application = this;
         //初始化网络请求工具
-        APIFactory.getInstance().init(this);
+//        APIFactory.getInstance().init(this);
     }
 }
